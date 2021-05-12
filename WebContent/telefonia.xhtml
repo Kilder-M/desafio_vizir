@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:form>
+	<h:messages />
+
+	<h:column>
+		<h:outputText value="Desafio Vizir" />
+
+	</h:column>
+
+	<h:panelGrid id="panel" columns="2" border="1" cellpadding="10"
+		cellspacing="1">
+
+		<f:facet name="header">
+			<h:outputText value="Telefonia Telzir" />
+		</f:facet>
+		<h:outputLabel value="Tarifas" />
+		<h:selectOneMenu value="#{telefoniaBean.tarifa}">
+			<f:selectItems value="#{telefoniaBean.tarifas}" var="entry"
+				itemValue="#{entry.valor}"
+				itemLabel="#{entry.origem} - #{entry.destino}" />
+		</h:selectOneMenu>
+
+		<h:outputLabel value="Tempo" />
+		<h:inputText value="#{telefoniaBean.minutos}" />
+
+		<h:outputLabel value="Planos" />
+		<h:selectOneMenu value="#{telefoniaBean.plano}">
+			<f:selectItems value="#{telefoniaBean.planos}" var="entry"
+				itemValue="#{entry}" itemLabel="#{entry}" />
+		</h:selectOneMenu>
+
+		<h:outputLabel value="Com Plano" />
+		<h:inputText disabled="true" value="#{telefoniaBean.comPlano}" />
+
+		<h:outputLabel value="Sem Plano" />
+		<h:inputText disabled="true" value="#{telefoniaBean.semPlano}" />
+
+		<f:facet name="footer">
+			<h:panelGroup style="display:block; text-align:center">
+				<h:commandButton id="btnCalular" value="Calcular"
+					action="#{telefoniaBean.calcular}" />
+			</h:panelGroup>
+		</f:facet>
+
+	</h:panelGrid>
+</h:form>
+</html>
